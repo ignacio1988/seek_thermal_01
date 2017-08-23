@@ -1,0 +1,6 @@
+numpy==1.13.1
+olefile==0.44
+Pillow==4.2.1
+pkg-resources==0.0.0
+pyusb==1.0.0
+scipy==0.19.1
