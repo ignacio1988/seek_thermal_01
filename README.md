@@ -17,7 +17,7 @@ Instrucciones:
 Uso:
 En la carpeta seek_thermal_01 ejecute el terminal y escriba el siguiente comando:
 
-   $ sudo python seek_gui_01.py o $sudo python seek_gui_02.py
+   $sudo python seek_gui_02.py
    
 
 
