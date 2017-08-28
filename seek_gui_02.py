@@ -4,6 +4,7 @@ import scipy.misc
 import time
 import matplotlib.pyplot as plt
 from connect_seek_02 import *
+from libtiff import TIFF, TIFFimage
 import sys
 import numpy
 import os
@@ -66,12 +67,15 @@ class MyWindowClass(QtGui.QMainWindow, form_class):
     def rec_image(self):
         global i
         rec_img16 = cam_connect.get_image()
-        rec_img16 = self.PatterHexa_16bit(rec_img16)
+        if self.CorrectPatternHexa.isChecked():
+            rec_img16 = self.PatterHexa_16bit(rec_img16)
         i += 1
         if not os.path.exists('./images'):
             os.makedirs('./images')
         name_img = './images/thermalseek_%d.tiff' % (i,)
-        scipy.misc.imsave(name_img, rec_img16)
+        tiff = TIFF.open(name_img, mode='w')
+        tiff.write_image(rec_img16)
+        #scipy.misc.imsave(name_img, rec_img16)
 
     def StartSeek(self):
         self.timer = QtCore.QTimer()
@@ -95,6 +99,7 @@ class MyWindowClass(QtGui.QMainWindow, form_class):
             print 'stop'
             self.pushButton.setText('rec')
             self.timer2.stop()
+
 
     def PatterHexa_16bit(self, img):
         col = 0
