@@ -133,8 +133,6 @@ class MyWindowClass(QtGui.QMainWindow, form_class):
 
         return hexa_pixels
 
-
-
     def FindBadPixel(self, img):
         bad_pixels = []
         array = img
@@ -166,5 +164,4 @@ app = QtGui.QApplication(sys.argv)
 MyWindow = MyWindowClass(None)
 MyWindow.show()
 MyWindow.StartSeek()
-MyWindow.Starthist()
 app.exec_()
